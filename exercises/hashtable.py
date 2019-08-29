@@ -1,19 +1,19 @@
 class Hashtable:
 
-    def __init__(self, buckets = 10):
+    def __init__(self, size = 10):
         self._table = []
-        self._buckets = buckets
+        self._size = size
         self._initialize_table()
 
     def _initialize_table(self):
-        for i in range(self._buckets):
+        for i in range(self._size):
             self._table.append([])
 
     def _hash_key(self, key):
         ordinal = 0
         for c in key:
             ordinal = ordinal + ord(c)
-        return ordinal % self._buckets
+        return ordinal % self._size
 
     def _find(self, key):
         bucket = self._table[self._hash_key(key)]
